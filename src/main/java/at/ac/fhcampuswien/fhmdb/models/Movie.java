@@ -3,12 +3,114 @@ package at.ac.fhcampuswien.fhmdb.models;
 import java.util.*;
 import static at.ac.fhcampuswien.fhmdb.models.Genre.*;
 
-public class Movie implements Comparable<Movie>{
-    private final String title;
+public class Movie {
+    private String id;
+
+    private String title;
+
+    private ArrayList<Genre> genres;
+
+    private int releaseYear;
+
+    private String description;
+
+    private String imgURL;
+
+    private int lengthInMinutes;
+
+    private ArrayList<String> directors;
+
+    private ArrayList<String> writers;
+
+    private ArrayList<String> mainCast;
+
+    private double rating;
+
+    //Movie constructor
+    //getter methods
+    //setter methods
+
+    public Movie (String id, String title, ArrayList<Genre> genres, int releaseYear, String description, String imgURL, int lenghtInMinutes, ArrayList<String> directors, ArrayList<String> writers, ArrayList<String> mainCast,double rating)
+    {
+        this.id = id;
+        this.title = title;
+        this.genres = genres;
+        this.releaseYear = releaseYear;
+        this.description = description;
+        this.imgURL = imgURL;
+        this.lengthInMinutes = lengthInMinutes;
+        this.directors = directors;
+        this.writers = writers;
+        this.mainCast = mainCast:
+        this.rating = rating;
+    }
+
+    public int getId() { return id;}
+    public String geTitle() {return title;}
+    public int getReleaseYear() {return releaseYear;}
+    public String getDescription() {return description;}
+    public String getImgURL() {return imgURL;}
+    public int getLengthInMinutes() {return lengthInMinutes;}
+    public double getRating() {return rating;}
+    public ArrayList<String> getMainCast() {return mainCast;}
+    public ArrayList<String> getDirectors() {return directors;}
+    public ArrayList<Genre> getGenres(){
+        return genres;
+    };
+
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setGenres(ArrayList<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public void setLengthInMinutes(int lengthInMinutes) {
+        this.lengthInMinutes = lengthInMinutes;
+    }
+
+    public void setDirectors(ArrayList<String> directors) {
+        this.directors = directors;
+    }
+
+    public void setWriters(ArrayList<String> writers) {
+        this.writers = writers;
+    }
+
+    public void setMainCast(ArrayList<String> mainCast) {
+        this.mainCast = mainCast;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+
+}
+
+   /* private final String title;
     private final String description;
 
     //Properties: Genres added
-    private final EnumSet<Genre> genres;
+    private final EnumSet<Genre> genres;*/
 
     public Movie(String title, String description, Genre... genres) {
         this.title = title;
@@ -29,7 +131,7 @@ public class Movie implements Comparable<Movie>{
         return genres;
     }
 
-    public static List<Movie> initializeMovies() {
+    /*public static List<Movie> initializeMovies() {
         List<Movie> movies = new ArrayList<>();
         //  add some movie titles + description + Genre
         movies.add(new Movie("Pi", "A paranoid mathematician searches for a key number that will unlock the universal patterns found in nature" ,DRAMA, HORROR, MYSTERY));
@@ -55,7 +157,7 @@ public class Movie implements Comparable<Movie>{
 
         return movies;
     }
-
+*/
     public static List<Movie> getMoviesByGenre(List<Movie> movies, Genre filter) {
         if (filter == NONE) return movies;
         return movies.stream().filter(movie -> movie.getGenres().contains(filter)).toList();
