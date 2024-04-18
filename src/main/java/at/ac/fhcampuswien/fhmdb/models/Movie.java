@@ -59,6 +59,20 @@ public class Movie {
         return genres;
     };
 
+    public String getGenresAsString() {
+        return genres.stream().map(Enum::name).reduce((a, b) -> a + ", " + b).orElse("No Genre");
+
+    }
+    public String getDirectorsAsString() {
+        return directors.stream().reduce((a, b) -> a + ", " + b).orElse("n/a");
+    }
+    public String getWritersAsString() {
+        return writers.stream().reduce((a, b) -> a + ", " + b).orElse("No Genre");
+    }
+    public String getMainCastAsString() {
+        return mainCast.stream().reduce((a, b) -> a + ", " + b).orElse("No Genre");
+    }
+
 
     public void setId(String id) {
         this.id = id;
@@ -106,6 +120,8 @@ public class Movie {
 
 
 }
+
+
 
    /* private final String title;
     private final String description;
