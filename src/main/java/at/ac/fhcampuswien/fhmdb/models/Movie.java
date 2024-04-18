@@ -29,6 +29,7 @@ public class Movie {
     //Movie constructor
     //getter methods
     //setter methods
+    //
 
     public Movie (String id, String title, ArrayList<Genre> genres, int releaseYear, String description, String imgURL, int lenghtInMinutes, ArrayList<String> directors, ArrayList<String> writers, ArrayList<String> mainCast,double rating)
     {
