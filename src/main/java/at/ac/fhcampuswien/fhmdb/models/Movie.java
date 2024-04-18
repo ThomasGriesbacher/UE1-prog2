@@ -31,7 +31,7 @@ public class Movie {
     //setter methods
     //
 
-    public Movie (String id, String title, ArrayList<Genre> genres, int releaseYear, String description, String imgURL, int lenghtInMinutes, ArrayList<String> directors, ArrayList<String> writers, ArrayList<String> mainCast,double rating)
+    public Movie (String id, String title, ArrayList<Genre> genres, int releaseYear, String description, String imgURL, int lengthInMinutes, ArrayList<String> directors, ArrayList<String> writers, ArrayList<String> mainCast,double rating)
     {
         this.id = id;
         this.title = title;
@@ -46,7 +46,7 @@ public class Movie {
         this.rating = rating;
     }
 
-    public int getId() { return id;}
+    public String getId() { return id;}
     public String geTitle() {return title;}
     public int getReleaseYear() {return releaseYear;}
     public String getDescription() {return description;}
