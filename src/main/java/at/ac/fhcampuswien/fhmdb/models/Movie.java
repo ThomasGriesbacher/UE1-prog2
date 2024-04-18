@@ -95,7 +95,7 @@ public class Movie {
     }
 
     public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+        this.imgURL = imgURL;
     }
 
     public void setLengthInMinutes(int lengthInMinutes) {
@@ -118,7 +118,6 @@ public class Movie {
         this.rating = rating;
     }
 
-
 }
 
 
@@ -129,7 +128,7 @@ public class Movie {
     //Properties: Genres added
     private final EnumSet<Genre> genres;*/
 
-    public Movie(String title, String description, Genre... genres) {
+   /* public Movie(String title, String description, Genre... genres) {
         this.title = title;
         this.description = description;
         this.genres = EnumSet.copyOf(Arrays.asList(genres));
@@ -148,7 +147,7 @@ public class Movie {
         return genres;
     }
 
-    /*public static List<Movie> initializeMovies() {
+    *//*public static List<Movie> initializeMovies() {
         List<Movie> movies = new ArrayList<>();
         //  add some movie titles + description + Genre
         movies.add(new Movie("Pi", "A paranoid mathematician searches for a key number that will unlock the universal patterns found in nature" ,DRAMA, HORROR, MYSTERY));
@@ -174,7 +173,7 @@ public class Movie {
 
         return movies;
     }
-*/
+*//*
     public static List<Movie> getMoviesByGenre(List<Movie> movies, Genre filter) {
         if (filter == NONE) return movies;
         return movies.stream().filter(movie -> movie.getGenres().contains(filter)).toList();
@@ -204,4 +203,4 @@ public class Movie {
     public int hashCode() {
         return Objects.hash(title, description, genres);
     }
-}
+}*/
