@@ -62,17 +62,17 @@ public class HomeControllerTest {
     @Test
     public void testGetMostPopularActor_MultipleMovies() {
 
-        ArrayList<Genre> genres = new ArrayList();
+        ArrayList<Genre> genres = new ArrayList() ;
         genres.add(Genre.ROMANCE);
         genres.add(Genre.ADVENTURE);
         genres.add(Genre.CRIME);
 
-        ArrayList<String> directors = new ArrayList();
+        ArrayList<String> directors = new ArrayList() ;
         directors.add("Director 1");
         directors.add("Director 2");
 
 
-        ArrayList<String> writers = new ArrayList();
+        ArrayList<String> writers = new ArrayList() ;
         writers.add("Writer 1");
         writers.add("Writer 2");
 
