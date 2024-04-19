@@ -123,8 +123,8 @@ public class HomeControllerTest {
         directors.add("Director 1");
         directors.add("Director 2");
         ArrayList<String> writers = new ArrayList();
-        writers.add("Writer 1");
-        writers.add("Writer 2");
+        writers.add("Writer 1") ;
+        writers.add("Writer 2") ;
 
 
         ArrayList<String> cast = new ArrayList<>();
