@@ -29,7 +29,6 @@ public class Movie {
     //Movie constructor
     //getter methods
     //setter methods
-    //
 
     public Movie (String id, String title, ArrayList<Genre> genres, int releaseYear, String description, String imgURL, int lengthInMinutes, ArrayList<String> directors, ArrayList<String> writers, ArrayList<String> mainCast,double rating)
     {
@@ -42,12 +41,16 @@ public class Movie {
         this.lengthInMinutes = lengthInMinutes;
         this.directors = directors;
         this.writers = writers;
-        this.mainCast = mainCast:
+        this.mainCast = mainCast;
         this.rating = rating;
     }
 
+    public Movie() {
+
+    }
+
     public String getId() { return id;}
-    public String geTitle() {return title;}
+    public String getTitle() {return title;}
     public int getReleaseYear() {return releaseYear;}
     public String getDescription() {return description;}
     public String getImgURL() {return imgURL;}
