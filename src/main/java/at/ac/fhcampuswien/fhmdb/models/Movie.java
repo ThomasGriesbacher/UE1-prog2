@@ -42,8 +42,12 @@ public class Movie {
         this.lengthInMinutes = lengthInMinutes;
         this.directors = directors;
         this.writers = writers;
-        this.mainCast = mainCast:
+        this.mainCast = mainCast;
         this.rating = rating;
+    }
+
+    public Movie() {
+
     }
 
     public String getId() { return id;}
