@@ -13,7 +13,7 @@ public class MovieAdapter extends TypeAdapter<Movie>{
 
     @Override
     public void write(JsonWriter out, Movie movie) throws IOException {
-        // Not needed for deserialization
+        // not needed for de-serialization
     }
 
     @Override
@@ -78,7 +78,7 @@ public class MovieAdapter extends TypeAdapter<Movie>{
         in.beginArray();
         while (in.hasNext()) {
             String genre = in.nextString();
-            genres.add(Genre.valueOf(genre.toUpperCase())); // Assuming genre strings are all upper case
+            genres.add(Genre.valueOf(genre.toUpperCase())); // assuming genre strings are all upper case
         }
         in.endArray();
         return genres;
