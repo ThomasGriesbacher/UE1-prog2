@@ -9,7 +9,7 @@ public class NoSSLValidation {
 
     public static void disable() {
         try {
-            // Erstellen eines Trust-Managers, der alle Zertifikate akzeptiert
+            // create trustmanager which accepts all certificates
             TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         public java.security.cert.X509Certificate[] getAcceptedIssuers() {
@@ -26,14 +26,14 @@ public class NoSSLValidation {
                     }
             };
 
-            // Erstellen eines SSLContexts, der den Trust-Manager verwendet
+            // create SSL context, which uses trustmanager
             SSLContext sc = SSLContext.getInstance("SSL");
             sc.init(null, trustAllCerts, new java.security.SecureRandom());
 
-            // Setzen des SSLContexts als Standard-SSL-Kontext
+            // set SSL context as Standard context
             HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 
-            // Setzen eines Hostname-Verifiers, der alle Hostnamen akzeptiert
+            // set hostname verifier which accepts all hostnames
             HostnameVerifier allHostsValid = (hostname, session) -> true;
             HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
         } catch (Exception e) {

@@ -125,7 +125,9 @@ public class Movie {
 
 
 
-   /* private final String title;
+   /* obsolete code from Exercise 1, no APIs back then
+
+    private final String title;
     private final String description;
 
     //Properties: Genres added
