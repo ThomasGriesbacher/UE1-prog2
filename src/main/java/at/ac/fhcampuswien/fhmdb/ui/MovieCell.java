@@ -50,10 +50,6 @@ public class MovieCell extends ListCell<Movie> {
 
             detail.setText(movieDetails);
 
-            /*imgView.setImage(new Image(movie.getImgUrl()));
-            imgView.setFitHeight(200);
-            imgView.setPreserveRatio(true);*/
-
             // color scheme
             title.getStyleClass().add("move-cell-title");
             imgView.getStyleClass().add("move-cell-img");
