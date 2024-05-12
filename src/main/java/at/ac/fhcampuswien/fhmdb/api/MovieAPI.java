@@ -16,8 +16,6 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class MovieAPI {
-    public MovieAPI() {
-    }
 
     public static final String BASE_URL = "https://prog2.fh-campuswien.ac.at/movies";
 
