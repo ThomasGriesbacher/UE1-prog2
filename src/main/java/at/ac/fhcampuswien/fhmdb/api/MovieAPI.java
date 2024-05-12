@@ -9,7 +9,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import at.ac.fhcampuswien.fhmdb.NoSSLValidation;
+
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -33,10 +33,10 @@ public class MovieAPI {
 
         try (Response response = httpClient.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-                throw new IOException("Unexpected code " + response);
+                throw new IOException("Unexpected code " + response); //different reason- delete IOException
             }
 
-            try (ResponseBody body = response.body()) {
+            try (ResponseBody body = response.body()) { //Json Format
                 if (body != null) {
                     Gson gson = new GsonBuilder().create();
                     Type movieListType = new TypeToken<List<Movie>>() {
@@ -53,7 +53,7 @@ public class MovieAPI {
     }
 
     public List<Movie> getMoviesByQuery(String endpoint, String query, int releaseYear, double ratingFrom, String genre) {
-        NoSSLValidation.disable();
+
 
         String baseUrl = endpoint + "?";
 
