@@ -9,7 +9,7 @@ import java.util.List;
 
 public class WatchlistRepository {
 
-    Dao<MovieEntity, Long> dao;
+    Dao<WatchlistMovieEntity, Long> dao;
 
     public WatchlistRepository() throws DatabaseException {
         try {
@@ -19,7 +19,7 @@ public class WatchlistRepository {
         }
     }
 
-    public List<MovieEntity> readWatchlist() throws DatabaseException {
+    public List<WatchlistMovieEntity> readWatchlist() throws DatabaseException {
         try {
             return dao.queryForAll();
         } catch (Exception e) {
@@ -28,7 +28,7 @@ public class WatchlistRepository {
         }
     }
 
-    public void addToWatchlist(MovieEntity movie) throws DatabaseException {
+    public void addToWatchlist(WatchlistMovieEntity movie) throws DatabaseException {
         try {
             // only add movie if it does not exist yet
             long count = dao.queryBuilder().where().eq("apiId", movie.getApiId()).countOf();
@@ -41,14 +41,14 @@ public class WatchlistRepository {
         }
     }
 
-    public void removeFromWatchlist(MovieEntity movie) throws DatabaseException {
+    public void removeFromWatchlist(WatchlistMovieEntity movie) throws DatabaseException {
         try {
             dao.delete(movie);
         } catch (Exception e) {
             throw new DatabaseException("Error while reading watchlist from the database");
         }
     }
-    public boolean isOnWatchlist(MovieEntity movie) throws DatabaseException {
+    public boolean isOnWatchlist(WatchlistMovieEntity movie) throws DatabaseException {
         try {
             return !dao.queryForMatching(movie).isEmpty();
         } catch (Exception e) {

@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @DatabaseTable(tableName = "watchlist")
-public class MovieEntity {
+public class WatchlistMovieEntity {
     @DatabaseField(generatedId = true)
     private long id;
 
@@ -35,9 +35,9 @@ public class MovieEntity {
     @DatabaseField()
     private double rating;
 
-    public MovieEntity(){}
+    public WatchlistMovieEntity(){}
 
-    public MovieEntity(String apiId, String title, String description, int releaseYear, List<Genre> genres, String imgUrl, int lengthInMinutes, double rating) {
+    public WatchlistMovieEntity(String apiId, String title, String description, int releaseYear, List<Genre> genres, String imgUrl, int lengthInMinutes, double rating) {
         this.apiId = apiId;
         this.title = title;
         this.description = description;

@@ -1,5 +1,7 @@
 package at.ac.fhcampuswien.fhmdb.controllers;
 
+import at.ac.fhcampuswien.fhmdb.database.DatabaseException;
+import at.ac.fhcampuswien.fhmdb.database.WatchlistMovieEntity;
 import at.ac.fhcampuswien.fhmdb.database.WatchlistRepository;
 import at.ac.fhcampuswien.fhmdb.models.Genre;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
@@ -14,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import at.ac.fhcampuswien.fhmdb.ui.UserDialog;
 
 import java.net.URL;
 import java.util.*;
@@ -53,13 +56,13 @@ public class MovieController implements Initializable {
                     movie.getDescription(),
                     movie.getReleaseYear(),
                     movie.getGenres(),
-                    movie.getImgUrl(),
+                    movie.getImgURL(),
                     movie.getLengthInMinutes(),
                     movie.getRating());
             try {
                 WatchlistRepository repository = new WatchlistRepository();
                 repository.addToWatchlist(watchlistMovieEntity);
-            } catch (DataBaseException e) {
+            } catch (DatabaseException e) {
                 UserDialog dialog = new UserDialog("Database Error", "Could not add movie to watchlist");
                 dialog.show();
                 e.printStackTrace();

@@ -10,19 +10,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseManager {
-    public static final String URL = "jdbc:postgresql://localhost:5432/fhmdb";
+    public static final String URL = "jdbc:h2:file:./db/fhmdb";
     public static final String user = "admin";
     public static final String pass = "pass";
 
     private static ConnectionSource connectionSource;
     private static DatabaseManager instance;
 
-    private final Dao<MovieEntity, Long> watchlistMovieDao;
+    private final Dao<WatchlistMovieEntity, Long> watchlistMovieDao;
 
     private DatabaseManager() throws DatabaseException {
         try {
             createConnectionSource();
-            watchlistMovieDao = DaoManager.createDao(connectionSource, MovieEntity.class);
+            watchlistMovieDao = DaoManager.createDao(connectionSource, WatchlistMovieEntity.class);
             createTables();
         } catch (SQLException e) {
             throw new DatabaseException(e.getMessage());
@@ -66,15 +66,15 @@ public class DatabaseManager {
 
     // creates tables in database
     private static void createTables() throws SQLException {
-        TableUtils.createTableIfNotExists(connectionSource, MovieEntity.class);
+        TableUtils.createTableIfNotExists(connectionSource, WatchlistMovieEntity.class);
     }
 
     // removes tables from database
     private static void dropTables() throws SQLException {
-        TableUtils.dropTable(connectionSource, MovieEntity.class, true);
+        TableUtils.dropTable(connectionSource, WatchlistMovieEntity.class, true);
     }
 
-    public Dao<MovieEntity, Long> getWatchlistDao() {
+    public Dao<WatchlistMovieEntity, Long> getWatchlistDao() {
         return watchlistMovieDao;
     }
 }
