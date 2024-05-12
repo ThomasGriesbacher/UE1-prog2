@@ -12,4 +12,5 @@ module at.ac.fhcampuswien.fhmdb {
 
     exports at.ac.fhcampuswien.fhmdb;
     exports at.ac.fhcampuswien.fhmdb.models;
+    exports at.ac.fhcampuswien.fhmdb.controllers;
 }
