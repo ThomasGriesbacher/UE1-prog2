@@ -1,8 +1,10 @@
 package at.ac.fhcampuswien.fhmdb.controllers;
 
+import at.ac.fhcampuswien.fhmdb.database.WatchlistRepository;
 import at.ac.fhcampuswien.fhmdb.models.Genre;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
 import at.ac.fhcampuswien.fhmdb.api.MovieAPI;
+import at.ac.fhcampuswien.fhmdb.ClickEventHandler;
 import at.ac.fhcampuswien.fhmdb.ui.MovieCell;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -11,18 +13,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.Collectors;
 
-public class HomeController implements Initializable {
+public class MovieController implements Initializable {
     @FXML
     public JFXButton searchBtn;
 
@@ -47,6 +45,27 @@ public class HomeController implements Initializable {
     private MovieAPI movieAPI;
     private ObservableList<Movie> observableMovies = FXCollections.observableArrayList();
 
+    private final ClickEventHandler onAddToWatchlistClicked = (clickedItem) -> {
+        if (clickedItem instanceof Movie movie) {
+            WatchlistMovieEntity watchlistMovieEntity = new WatchlistMovieEntity(
+                    movie.getId(),
+                    movie.getTitle(),
+                    movie.getDescription(),
+                    movie.getReleaseYear(),
+                    movie.getGenres(),
+                    movie.getImgUrl(),
+                    movie.getLengthInMinutes(),
+                    movie.getRating());
+            try {
+                WatchlistRepository repository = new WatchlistRepository();
+                repository.addToWatchlist(watchlistMovieEntity);
+            } catch (DataBaseException e) {
+                UserDialog dialog = new UserDialog("Database Error", "Could not add movie to watchlist");
+                dialog.show();
+                e.printStackTrace();
+            }
+        }
+    };
 
 
     // TODO gibt jene Person zurück, die am öftesten im mainCast der übergebenen Filme vorkommt.

@@ -20,7 +20,7 @@ public class MovieAPI {
     public static final String BASE_URL = "https://prog2.fh-campuswien.ac.at/movies";
 
 
-    public List<Movie> getAllMovies(String endpoint) {
+    public List<Movie> getAllMovies(String endpoint) throws MovieApiException{
 
         OkHttpClient httpClient = new OkHttpClient();
 
@@ -45,6 +45,7 @@ public class MovieAPI {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            throw new MovieApiException(e.getMessage());
         }
 
         return null;
