@@ -16,7 +16,7 @@
         <BorderPane layoutX="76.0" prefHeight="45" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <left>
                 <HBox prefHeight="100.0" prefWidth="200.0">
-                    <Label style="-fx-background-color: F5C518;" text="FHMDb" BorderPane.alignment="CENTER">
+                    <Label style="-fx-background-color: #C3ECDC;" text="FHMDb" BorderPane.alignment="CENTER">
                         <font>
                             <Font name="Calibri Bold" size="24.0" />
                         </font>

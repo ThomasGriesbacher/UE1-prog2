@@ -14,12 +14,12 @@
         minHeight="575.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
    <HBox spacing="5.0" styleClass="background-black" stylesheets="@../styles/styles.css">
       <children>
-         <JFXButton fx:id="sortBtn" onAction="#sortBtnClicked" styleClass="background-yellow" stylesheets="@../styles/styles.css" text="Sort" />
+         <JFXButton fx:id="sortBtn" onAction="#sortBtnClicked" styleClass="background-green" stylesheets="@../styles/styles.css" text="Sort" />
          <TextField fx:id="searchField" prefHeight="25.0" prefWidth="170.0" promptText="Search FHMDb" />
          <JFXComboBox fx:id="genreComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@../styles/styles.css" />
          <JFXComboBox fx:id="releaseYearComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@../styles/styles.css" />
          <JFXComboBox fx:id="ratingFromComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@../styles/styles.css" />
-         <JFXButton fx:id="searchBtn" onAction="#searchBtnClicked" styleClass="background-yellow" stylesheets="@../styles/styles.css" text="Filter" />
+         <JFXButton fx:id="searchBtn" onAction="#searchBtnClicked" styleClass="background-green" stylesheets="@../styles/styles.css" text="Filter" />
       </children>
       <VBox.margin>
          <Insets />
