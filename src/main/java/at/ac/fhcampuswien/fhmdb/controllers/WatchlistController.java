@@ -59,7 +59,7 @@ public class WatchlistController implements Initializable {
             e.printStackTrace();
         }
 
-        if(watchlist.size() == 0) {
+        if(watchlist.isEmpty()) {
             watchlistView.setPlaceholder(new javafx.scene.control.Label("Watchlist is empty"));
         }
 
