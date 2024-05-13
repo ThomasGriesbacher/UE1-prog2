@@ -57,13 +57,12 @@ public class DatabaseManager {
             try {
                 connectionSource.close();
             } catch (Exception e) {
-                e.printStackTrace();
                 throw new DataBaseException(e.getMessage());
             }
         }
     }
 
-    // creates the tables in the database
+    // creates tables in the database
     private static void createTables() throws SQLException {
         TableUtils.createTableIfNotExists(connectionSource, WatchlistMovieEntity.class);
     }

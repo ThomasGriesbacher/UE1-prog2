@@ -32,7 +32,6 @@ public class WatchlistRepository {
                 dao.create(movie);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             throw new DataBaseException("Error while adding to watchlist");
         }
     }
@@ -47,7 +46,7 @@ public class WatchlistRepository {
 
     public boolean isOnWatchlist(WatchlistMovieEntity movie) throws DataBaseException {
         try {
-            return dao.queryForMatching(movie).size() > 0;
+            return !dao.queryForMatching(movie).isEmpty();
         } catch (Exception e) {
             throw new DataBaseException("Error while checking if movie is on watchlist");
         }
