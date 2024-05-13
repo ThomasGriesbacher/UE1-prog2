@@ -6,11 +6,9 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class DatabaseManager {
-    public static final String URL = "jdbc:h2:file:./db/fhmdb";
+    private static final String DB_URL = "jdbc:h2:file:./db/fhmdb"; // in memory: jdbc:h2:mem:fhmdb
     public static final String user = "admin";
     public static final String pass = "pass";
 
@@ -19,52 +17,53 @@ public class DatabaseManager {
 
     private final Dao<WatchlistMovieEntity, Long> watchlistMovieDao;
 
-    private DatabaseManager() throws DatabaseException {
+    private DatabaseManager() throws DataBaseException {
         try {
             createConnectionSource();
             watchlistMovieDao = DaoManager.createDao(connectionSource, WatchlistMovieEntity.class);
             createTables();
         } catch (SQLException e) {
-            throw new DatabaseException(e.getMessage());
+            throw new DataBaseException(e.getMessage());
         }
     }
 
     // get singleton database instance
-    public static DatabaseManager getInstance() throws DatabaseException {
+    public static DatabaseManager getInstance() throws DataBaseException {
         if (instance == null) {
             instance = new DatabaseManager();
         }
         return instance;
     }
 
-    public static ConnectionSource getConnectionSource() throws DatabaseException {
+    public static ConnectionSource getConnectionSource() throws DataBaseException {
         if (connectionSource == null) {
             createConnectionSource();
         }
         return connectionSource;
     }
 
-    private static void createConnectionSource() throws DatabaseException {
+    private static void createConnectionSource() throws DataBaseException {
         try {
-            connectionSource = new JdbcConnectionSource(URL, user, pass);
+            connectionSource = new JdbcConnectionSource(DB_URL, user, pass);
         } catch (SQLException e) {
-            throw new DatabaseException(e.getMessage());
+            throw new DataBaseException(e.getMessage());
         }
 
     }
 
-    // close db connection
-    public static void closeConnectionSource() throws DatabaseException {
-        if (connectionSource != null) {
+    // close the db connection
+    public static void closeConnectionSource() throws DataBaseException {
+        if(connectionSource != null){
             try {
                 connectionSource.close();
             } catch (Exception e) {
-                Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, "Error while closing database connection", e);                throw new DatabaseException(e.getMessage());
+                e.printStackTrace();
+                throw new DataBaseException(e.getMessage());
             }
         }
     }
 
-    // creates tables in database
+    // creates the tables in the database
     private static void createTables() throws SQLException {
         TableUtils.createTableIfNotExists(connectionSource, WatchlistMovieEntity.class);
     }

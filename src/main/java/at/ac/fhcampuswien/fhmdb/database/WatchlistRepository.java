@@ -2,33 +2,29 @@ package at.ac.fhcampuswien.fhmdb.database;
 
 import com.j256.ormlite.dao.Dao;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import java.util.List;
 
 public class WatchlistRepository {
 
     Dao<WatchlistMovieEntity, Long> dao;
 
-    public WatchlistRepository() throws DatabaseException {
+    public WatchlistRepository() throws DataBaseException {
         try {
             this.dao = DatabaseManager.getInstance().getWatchlistDao();
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new DataBaseException(e.getMessage());
         }
     }
 
-    public List<WatchlistMovieEntity> readWatchlist() throws DatabaseException {
+    public List<WatchlistMovieEntity> readWatchlist() throws DataBaseException {
         try {
             return dao.queryForAll();
         } catch (Exception e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Error while reading watchlist from the database", e);
-            throw new DatabaseException("Error while reading watchlist from the database");
+            e.printStackTrace();
+            throw new DataBaseException("Error while reading watchlist");
         }
     }
-
-    public void addToWatchlist(WatchlistMovieEntity movie) throws DatabaseException {
+    public void addToWatchlist(WatchlistMovieEntity movie) throws DataBaseException {
         try {
             // only add movie if it does not exist yet
             long count = dao.queryBuilder().where().eq("apiId", movie.getApiId()).countOf();
@@ -36,23 +32,24 @@ public class WatchlistRepository {
                 dao.create(movie);
             }
         } catch (Exception e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Error while reading watchlist from the database", e);
-            throw new DatabaseException("Error while reading watchlist from the database");
+            e.printStackTrace();
+            throw new DataBaseException("Error while adding to watchlist");
         }
     }
 
-    public void removeFromWatchlist(WatchlistMovieEntity movie) throws DatabaseException {
+    public void removeFromWatchlist(WatchlistMovieEntity movie) throws DataBaseException {
         try {
             dao.delete(movie);
         } catch (Exception e) {
-            throw new DatabaseException("Error while reading watchlist from the database");
+            throw new DataBaseException("Error while removing from watchlist");
         }
     }
-    public boolean isOnWatchlist(WatchlistMovieEntity movie) throws DatabaseException {
+
+    public boolean isOnWatchlist(WatchlistMovieEntity movie) throws DataBaseException {
         try {
-            return !dao.queryForMatching(movie).isEmpty();
+            return dao.queryForMatching(movie).size() > 0;
         } catch (Exception e) {
-            throw new DatabaseException("Error while checking if movie is on watchlist");
+            throw new DataBaseException("Error while checking if movie is on watchlist");
         }
     }
 }

@@ -21,11 +21,11 @@
                             <Font name="Calibri Bold" size="24.0" />
                         </font>
                     </Label>
-                    <Label styleClass="text-white" stylesheets="@styles.css" text="Welcome to FHMDb!" />
+                    <Label styleClass="text-white" stylesheets="@../styles/styles.css" text="Welcome to FHMDb!" />
                 </HBox>
             </left>
             <right>
-                <JFXHamburger fx:id="hamburgerMenu" alignment="TOP_RIGHT" stylesheets="@styles.css" BorderPane.alignment="CENTER" />
+                <JFXHamburger fx:id="hamburgerMenu" alignment="TOP_RIGHT" stylesheets="@../styles/styles.css" BorderPane.alignment="CENTER" />
             </right>
             <padding>
                 <Insets left="10.0" right="10.0" top="10.0" />

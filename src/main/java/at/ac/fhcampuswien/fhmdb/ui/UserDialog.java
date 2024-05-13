@@ -12,7 +12,7 @@ public class UserDialog {
         dialog.setTitle(title);
         dialog.setContentText(msg);
 
-        ButtonType type = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().add(type);
     }
 

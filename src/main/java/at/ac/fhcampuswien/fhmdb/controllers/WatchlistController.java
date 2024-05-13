@@ -1,7 +1,7 @@
 package at.ac.fhcampuswien.fhmdb.controllers;
 
 import at.ac.fhcampuswien.fhmdb.ClickEventHandler;
-import at.ac.fhcampuswien.fhmdb.database.DatabaseException;
+import at.ac.fhcampuswien.fhmdb.database.DataBaseException;
 import at.ac.fhcampuswien.fhmdb.database.WatchlistMovieEntity;
 import at.ac.fhcampuswien.fhmdb.database.WatchlistRepository;
 import at.ac.fhcampuswien.fhmdb.ui.UserDialog;
@@ -34,7 +34,7 @@ public class WatchlistController implements Initializable {
                 WatchlistRepository watchlistRepository = new WatchlistRepository();
                 watchlistRepository.removeFromWatchlist(watchlistMovieEntity);
                 observableWatchlist.remove(watchlistMovieEntity);
-            } catch (DatabaseException e) {
+            } catch (DataBaseException e) {
                 UserDialog dialog = new UserDialog("Database Error", "Could not remove movie from watchlist");
                 dialog.show();
                 e.printStackTrace();
@@ -53,7 +53,7 @@ public class WatchlistController implements Initializable {
             watchlistView.setItems(observableWatchlist);
             watchlistView.setCellFactory(movieListView -> new WatchlistCell(onRemoveFromWatchlistClicked));
 
-        } catch (DatabaseException e) {
+        } catch (DataBaseException e) {
             UserDialog dialog = new UserDialog("Database Error", "Could not read movies from DB");
             dialog.show();
             e.printStackTrace();
@@ -67,8 +67,7 @@ public class WatchlistController implements Initializable {
         System.out.println("WatchlistController initialized");
     }
 
-    private List<WatchlistMovieEntity> getWatchlist() throws DatabaseException, DatabaseException {
+    private List<WatchlistMovieEntity> getWatchlist() throws DataBaseException {
         return watchlistRepository.readWatchlist();
     }
-
 }

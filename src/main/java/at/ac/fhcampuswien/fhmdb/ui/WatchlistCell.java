@@ -103,4 +103,3 @@ public class WatchlistCell extends ListCell<WatchlistMovieEntity> {
         }
     }
 }
-
