@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.fhmdb;
 
+import at.ac.fhcampuswien.fhmdb.controllers.MovieListController;
 import at.ac.fhcampuswien.fhmdb.models.Genre;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
 import javafx.collections.FXCollections;
@@ -18,7 +19,7 @@ public class HomeControllerTest {
     @Test
     public void testGetMostPopularActor_EmptyList() {
         List<Movie> movies = new ArrayList<>();
-        String mostPopularActor = HomeController.getMostPopularActor(movies);
+        String mostPopularActor = MovieListController.getMostPopularActor(movies);
         assertEquals("", mostPopularActor);
     }
 
@@ -55,7 +56,7 @@ public class HomeControllerTest {
         List<Movie> movies = new ArrayList<>();
         movies.add(movie);
 
-        String mostPopularActor = HomeController.getMostPopularActor(movies);
+        String mostPopularActor = MovieListController.getMostPopularActor(movies);
         assertEquals("Actor A", mostPopularActor);
     }
 
@@ -107,7 +108,7 @@ public class HomeControllerTest {
         movies.add(movie1);
         movies.add(movie2);
 
-        String mostPopularActor = HomeController.getMostPopularActor(movies);
+        String mostPopularActor = MovieListController.getMostPopularActor(movies);
         assertEquals("Actor A", mostPopularActor);
     }
 
@@ -178,7 +179,7 @@ public class HomeControllerTest {
 
     @Test
     public void testCountMoviesFromWithEmptyMoviesList() {
-        assertEquals(0, HomeController.countMoviesFrom(new ArrayList<>(), "Director"));
+        assertEquals(0, MovieListController.countMoviesFrom(new ArrayList<>(), "Director"));
     }
 
     @Test
@@ -222,7 +223,7 @@ public class HomeControllerTest {
         movies.add(movie2);
 
 
-        assertEquals(2, HomeController.countMoviesFrom(movies, "Director 1"));
+        assertEquals(2, MovieListController.countMoviesFrom(movies, "Director 1"));
     }
 
     // Test case 1: Get movies between 1990 and 2000
@@ -267,7 +268,7 @@ public class HomeControllerTest {
         movies.add(movie1);
         movies.add(movie2);
 
-        List<Movie> result1 = HomeController.getMoviesBetweenYears(movies, 1990, 2000);
+        List<Movie> result1 = MovieListController.getMoviesBetweenYears(movies, 1990, 2000);
         Assertions.assertEquals(1, result1.size());
         Assertions.assertTrue(result1.contains(movie1));
     }
@@ -315,7 +316,7 @@ public class HomeControllerTest {
         movies.add(movie2);
 
         // Test case 1: Get movies between 1990 and 2000
-        List<Movie> result1 = HomeController.getMoviesBetweenYears(movies, 1990, 2000);
+        List<Movie> result1 = MovieListController.getMoviesBetweenYears(movies, 1990, 2000);
         Assertions.assertEquals(2, result1.size());
         Assertions.assertTrue(result1.contains(movie1));
         Assertions.assertTrue(result1.contains(movie2));

@@ -40,7 +40,6 @@
                     <children>
                         <JFXButton fx:id="homeBtn" onAction="#navigateToMovielist" prefHeight="25.0" prefWidth="130.0" text="Home" />
                         <JFXButton fx:id="watchlistBtn" onAction="#navigateToWatchlist" prefWidth="130.0" text="Watchlist" />
-                        <JFXButton fx:id="aboutBtn" prefWidth="130.0" text="About" />
                     </children>
                 </VBox>
             </sidePane>
